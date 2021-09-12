@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/list/")
+@RequestMapping("/api/v1/list")
 public class ListController {
     HomeRepo homeRepo;
     UserRepo userRepo;
@@ -22,12 +22,12 @@ public class ListController {
         this.userRepo = userRepo;
     }
 
-    @GetMapping("home")
+    @GetMapping("/home")
     public ResponseEntity<List<Home>> listHome() {
         return ResponseEntity.ok().body(homeRepo.findAll());
     }
 
-    @GetMapping("user")
+    @GetMapping("/user")
     public ResponseEntity<List<User>> listUser() {
         return ResponseEntity.ok().body(userRepo.findAll());
     }

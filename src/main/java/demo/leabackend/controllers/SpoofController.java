@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/user/{user_id}/spoof/")
+@RequestMapping("/api/v1/user/{user_id}/spoof")
 public class SpoofController {
     private SpoofRepo spoofRepo;
     private UserRepo userRepo;

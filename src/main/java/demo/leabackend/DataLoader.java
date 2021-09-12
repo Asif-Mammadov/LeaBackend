@@ -27,7 +27,9 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         userRepo.save(new User("Jon", "Snow", "john.snow@gmail.com", "0515553212", "Hello, I am Jon Snow", "40.4093;49.8671"));
         User user = userRepo.findByEmail("john.snow@gmail.com");
-        homeRepo.save(new Home(true, false, true, 2, 300, new Date(2021, Calendar.SEPTEMBER, 11, 20, 0, 0), true, "49.4524;50.3235", user));
+        homeRepo.save(new Home(true, false, true, 2, 300, new Date(121, Calendar.SEPTEMBER, 11, 20, 0, 0), true, "49.4524;50.3235", user));
+
+        userRepo.save(new User("Kate", "Spirng", "kate.spring@live.com", "053413342", "Hello, Kate here", "49.3234;50.32454"));
 //        homeRepo.findById(1L).map((home) -> {
 //                    home.setReservant(user);
 //                    return homeRepo.save(home);

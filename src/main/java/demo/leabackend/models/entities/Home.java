@@ -22,7 +22,7 @@ public class Home {
     private Integer durationOfStay; //in minutes
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date createdDate;
-    private boolean isActive;
+    private boolean isAvailable;
     private String location;
 
 //    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
@@ -44,7 +44,7 @@ public class Home {
         this.numRooms = numRooms;
         this.durationOfStay = durationOfStay;
         this.createdDate = createDate;
-        this.isActive = isActive;
+        this.isAvailable = isActive;
         this.location = location;
     }
 
@@ -55,7 +55,7 @@ public class Home {
         this.numRooms = numRooms;
         this.durationOfStay = durationOfStay;
         this.createdDate = createDate;
-        this.isActive = isActive;
+        this.isAvailable = isActive;
         this.location = location;
         this.owner = owner;
         this.reservant = reservant;
@@ -68,7 +68,7 @@ public class Home {
         this.numRooms = numRooms;
         this.durationOfStay = durationOfStay;
         this.createdDate = createDate;
-        this.isActive = isActive;
+        this.isAvailable = isActive;
         this.location = location;
         this.owner = owner;
     }
@@ -129,12 +129,12 @@ public class Home {
         this.createdDate = createDate;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public boolean isAvailable() {
+        return isAvailable;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     public String getLocation() {

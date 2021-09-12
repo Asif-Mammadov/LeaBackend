@@ -1,6 +1,7 @@
 package demo.leabackend.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -125,6 +126,7 @@ public class User {
         this.location = location;
     }
 
+    @JsonIdentityReference(alwaysAsId = true)
     public Home getHome() {
         return home;
     }
@@ -133,6 +135,7 @@ public class User {
         this.home = home;
     }
 
+    @JsonIdentityReference(alwaysAsId = true)
     public Home getReservedHome() {
         return reservedHome;
     }
@@ -141,6 +144,7 @@ public class User {
         this.reservedHome = reservedHome;
     }
 
+    @JsonIdentityReference(alwaysAsId = true)
     public Spoof getSpoof() {
         return spoof;
     }

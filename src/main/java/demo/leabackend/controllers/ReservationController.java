@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/user/{user_id}/reservation/")
+@RequestMapping("/api/v1/user/{user_id}/reservation")
 public class ReservationController {
     private UserRepo userRepo;
     private HomeRepo homeRepo;
@@ -31,7 +31,7 @@ public class ReservationController {
         }
     }
 
-    @PostMapping("{owner_id}")
+    @PostMapping("/{owner_id}")
     public ResponseEntity<Home> addReservation(@PathVariable("user_id") Long reservant_id, @PathVariable Long owner_id) {
         User owner = userRepo.findById(owner_id).orElse(null);
         User reservant = userRepo.findById(reservant_id).orElse(null);
@@ -47,6 +47,7 @@ public class ReservationController {
                 throw new GeneralException("Home is reserved by user id : " + home.getReservant().getId());
             else {
                 home.setReservant(reservant);
+                home.setAvailable(false);
                 return ResponseEntity.ok().body(homeRepo.save(home));
             }
         }
@@ -58,7 +59,10 @@ public class ReservationController {
         if (home == null)
             throw new GeneralException("No reservation for user id : " + reservant_id);
         else {
-            homeRepo.deleteById(home.getId());
+            home.setAvailable(true);
+            home.setReservant(null);
+            homeRepo.save(home);
+
             return ResponseEntity.ok().body(home);
         }
     }

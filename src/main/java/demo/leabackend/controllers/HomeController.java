@@ -10,6 +10,8 @@ import demo.leabackend.models.repositories.UserRepo;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("/api/v1/user/{user_id}/home")
 public class HomeController {
@@ -41,6 +43,8 @@ public class HomeController {
                 throw new GeneralException("User already has a home");
             else {
                 newHome.setOwner(owner);
+                if (newHome.getCreatedDate() == null)
+                    newHome.setCreatedDate(new Date());
                 return ResponseEntity.ok().body(homeRepo.save(newHome));
             }
         }

@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/user/")
+@RequestMapping("/api/v1/user")
 public class UserController {
     private UserRepo userRepo;
 
@@ -15,7 +15,7 @@ public class UserController {
         this.userRepo = userRepo;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> getUser(@PathVariable Long id) {
         return userRepo.findById(id)
                 .map(user -> {
@@ -30,7 +30,7 @@ public class UserController {
     }
 
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         User user  = userRepo.findById(id).orElse(null);
         if (user == null)

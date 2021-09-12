@@ -6,7 +6,11 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Locale;
+import java.util.Objects;
 
 @Entity
 @Table(name = "message")
@@ -31,7 +35,9 @@ public class Message {
 
     public Message() {
     }
-
+    public Message(String body) {
+        this.body = body;
+    }
     public Message(String body, Date createdDate) {
         this.body = body;
         this.createdDate = createdDate;
@@ -84,5 +90,18 @@ public class Message {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Message message = (Message) o;
+        return id.equals(message.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
