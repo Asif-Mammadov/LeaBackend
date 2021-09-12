@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -34,6 +35,16 @@ public class User {
             cascade = CascadeType.REMOVE, orphanRemoval = true,
             mappedBy = "user")
     private Spoof spoof;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.REMOVE, orphanRemoval = true,
+            mappedBy = "creator")
+    private Set<Message> createdMessage;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = CascadeType.REMOVE, orphanRemoval = true,
+            mappedBy = "receiver")
+    private Set<Message> receivedMessage;
 
     public User() {
     }

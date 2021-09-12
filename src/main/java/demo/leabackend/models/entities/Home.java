@@ -21,7 +21,7 @@ public class Home {
     private Integer numRooms;
     private Integer durationOfStay; //in minutes
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
-    private Date createDate;
+    private Date createdDate;
     private boolean isActive;
     private String location;
 
@@ -43,7 +43,7 @@ public class Home {
         this.hasWifi = hasWifi;
         this.numRooms = numRooms;
         this.durationOfStay = durationOfStay;
-        this.createDate = createDate;
+        this.createdDate = createDate;
         this.isActive = isActive;
         this.location = location;
     }
@@ -54,7 +54,7 @@ public class Home {
         this.hasWifi = hasWifi;
         this.numRooms = numRooms;
         this.durationOfStay = durationOfStay;
-        this.createDate = createDate;
+        this.createdDate = createDate;
         this.isActive = isActive;
         this.location = location;
         this.owner = owner;
@@ -67,23 +67,12 @@ public class Home {
         this.hasWifi = hasWifi;
         this.numRooms = numRooms;
         this.durationOfStay = durationOfStay;
-        this.createDate = createDate;
+        this.createdDate = createDate;
         this.isActive = isActive;
         this.location = location;
         this.owner = owner;
     }
 
-//    public Home(boolean hasChildren, boolean hasPets, boolean hasWifi, Integer numRooms, Integer durationOfStay, Date createDate, boolean isActive, String location, Long owner_id) {
-//        this.hasChildren = hasChildren;
-//        this.hasPets = hasPets;
-//        this.hasWifi = hasWifi;
-//        this.numRooms = numRooms;
-//        this.durationOfStay = durationOfStay;
-//        this.createDate = createDate;
-//        this.isActive = isActive;
-//        this.location = location;
-//        this.owner = userRepo.findById(owner_id).orElse(null);
-//    }
     public Long getId() {
         return id;
     }
@@ -132,12 +121,12 @@ public class Home {
         this.durationOfStay = durationOfStay;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreatedDate(Date createDate) {
+        this.createdDate = createDate;
     }
 
     public boolean isActive() {
