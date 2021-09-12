@@ -25,8 +25,6 @@ public class Home {
     private boolean isAvailable;
     private String location;
 
-//    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
-//@JsonIdentityReference(alwaysAsId = true)
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="owner_id")
     private User owner;
