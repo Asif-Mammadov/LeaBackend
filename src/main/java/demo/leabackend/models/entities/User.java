@@ -7,11 +7,11 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="user_id")
+    @Column(name = "user_id")
     private Long id;
     private String firstName;
     private String lastName;
@@ -21,21 +21,22 @@ public class User {
     private String location;
 
     @OneToOne(fetch = FetchType.EAGER,
-    cascade = CascadeType.REMOVE, orphanRemoval = true,
-    mappedBy = "owner")
+            cascade = CascadeType.REMOVE, orphanRemoval = true,
+            mappedBy = "owner")
     private Home home;
 
-    @OneToOne(fetch=FetchType.EAGER,
-    cascade = CascadeType.REMOVE, orphanRemoval = true,
-    mappedBy = "reservant")
+    @OneToOne(fetch = FetchType.EAGER,
+            cascade = CascadeType.REMOVE, orphanRemoval = true,
+            mappedBy = "reservant")
     private Home reservedHome;
 
     @OneToOne(fetch = FetchType.EAGER,
-    cascade = CascadeType.REMOVE, orphanRemoval = true,
-    mappedBy = "user")
+            cascade = CascadeType.REMOVE, orphanRemoval = true,
+            mappedBy = "user")
     private Spoof spoof;
 
-    public User () {}
+    public User() {
+    }
 
     public User(String firstName, String lastName, String email, String phoneNumber, String details, String location, Home home, Home reservedHome) {
         this.firstName = firstName;
@@ -129,4 +130,11 @@ public class User {
         this.reservedHome = reservedHome;
     }
 
+    public Spoof getSpoof() {
+        return spoof;
+    }
+
+    public void setSpoof(Spoof spoof) {
+        this.spoof = spoof;
+    }
 }

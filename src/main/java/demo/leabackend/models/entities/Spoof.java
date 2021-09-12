@@ -1,9 +1,16 @@
 package demo.leabackend.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "spoof")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class,property = "id")
 public class Spoof {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +18,8 @@ public class Spoof {
 
     private String startLocation;
     private String endLocation;
+
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date endDate;
 
     @OneToOne(fetch = FetchType.EAGER)
@@ -58,6 +67,7 @@ public class Spoof {
         this.endDate = endDate;
     }
 
+    @JsonIdentityReference(alwaysAsId = true)
     public User getUser() {
         return user;
     }
