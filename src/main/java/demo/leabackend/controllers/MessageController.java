@@ -7,7 +7,6 @@ import demo.leabackend.models.entities.Message;
 import demo.leabackend.models.entities.User;
 import demo.leabackend.models.repositories.MessageRepo;
 import demo.leabackend.models.repositories.UserRepo;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
