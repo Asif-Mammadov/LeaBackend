@@ -23,6 +23,7 @@ public class MessageController {
         this.messageRepo = messageRepo;
         this.userRepo = userRepo;
     }
+
     @GetMapping
     public ResponseEntity<MessageBulk> getMessages(@PathVariable Long user_id) {
         List<Message> sent = messageRepo.findAllByCreatorId(user_id);
@@ -36,10 +37,11 @@ public class MessageController {
     public ResponseEntity<Message> sendMessage(@PathVariable Long user_id, @PathVariable Long receiver_id, @RequestBody Message message) {
         User creator = userRepo.findById(user_id).orElse(null);
         User receiver = userRepo.findById(receiver_id).orElse(null);
-
-        if (creator == null) {
+        if (user_id == receiver_id)
+            throw new GeneralException("Same sender and receiver id");
+        else if (creator == null)
             throw new UserNotFoundException(user_id);
-        } else if (receiver == null)
+        else if (receiver == null)
             throw new UserNotFoundException(receiver_id);
         else {
             if (message.getCreatedDate() == null)
@@ -60,7 +62,7 @@ public class MessageController {
             if (messageToDelete == null)
                 throw new GeneralException("Message not found");
             List<Message> messages = messageRepo.findAllByCreatorId(user_id);
-            if (messages.contains(messageToDelete)){
+            if (messages.contains(messageToDelete)) {
                 messageRepo.delete(messageToDelete);
                 return ResponseEntity.ok(messageToDelete);
             } else {
