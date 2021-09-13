@@ -25,6 +25,7 @@ dependencies {
     implementation 'dk.nykredit.jackson.dataformat:jackson-dataformat-hal:1.0.2'
     implementation 'com.h2database:h2:1.4.200'
     implementation 'org.apache.tomcat:tomcat-jdbc:10.0.8'
+    implementation 'org.postgresql:postgresql:42.2.23.jre7'
 //    implementation 'org.springframework.boot:spring-boot-starter-security'
 //    implementation 'com.h2database:h2:1.4.200'
     compileOnly 'org.projectlombok:lombok'
