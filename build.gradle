@@ -23,6 +23,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.5'
     implementation 'dk.nykredit.jackson.dataformat:jackson-dataformat-hal:1.0.2'
+    implementation 'com.h2database:h2:1.4.200'
+    implementation 'org.apache.tomcat:tomcat-jdbc:10.0.8'
 //    implementation 'org.springframework.boot:spring-boot-starter-security'
 //    implementation 'com.h2database:h2:1.4.200'
     compileOnly 'org.projectlombok:lombok'
@@ -31,6 +33,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.apache.httpcomponents:httpclient'
+//    implementation 'org.apache.tomcat:tomcat-catalina'
 }
 
 test {
